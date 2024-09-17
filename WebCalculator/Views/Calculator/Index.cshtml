@@ -1,0 +1,25 @@
+﻿@model WebCalculator.Models.CalculatorModel
+
+<h2>Онлайн-калькулятор</h2>
+
+<form asp-action="Index" method="post">
+    <div>
+        <label for="Expression">Введите выражение:</label>
+        <input type="text" id="Expression" name="Expression" value="@Model.Expression" />
+    </div>
+    <button style="margin: 10px 0px" type="submit">Вычислить</button>
+</form>
+
+@if (Model.Result.HasValue)
+{
+    <div>
+        <h3>Результат: @Model.Result</h3>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div style="color: red;">
+        <h3>Ошибка: @Model.ErrorMessage</h3>
+    </div>
+}
